@@ -1,4 +1,4 @@
 ```
-Because of the file size, the TPM data is compressed into a ZIP file.
-Use the file after UNZIP to test the pipeline.
+Due to the file size, the TPM data (TPM_merged_samples.zip) is compressed.
+UNZIP the file before running the pipeline.
 ```
