@@ -20,7 +20,7 @@ pip install torch pydeseq2 shap scikit-learn pandas numpy matplotlib seaborn pyy
 Place exactly **two files** in `Data/`:
 
 ```
-TPM_all_samples.csv    # one TPM matrix for ALL samples
+TPM_merged_samples.csv # one TPM matrix for ALL samples
                        # rows = genes, columns = sample IDs
                        # first column = Gene_ID (configurable)
 
