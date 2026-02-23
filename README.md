@@ -106,31 +106,19 @@ Then add the corresponding files to `Data/` and re-run.
 ## Output Files
 
 All outputs are written to `Export/` (configurable):
-
- `marker_genes.txt`  Final marker gene list used as model input 
- 
- `{stress}_DEG_{up/down}.txt`  All DEGs per stress 
- 
- `{stress}_DEG_{up/down}_unique.txt`  Stress-exclusive DEGs 
- 
- `{stress}_DEG_{up/down}_sub.txt`  Subsampled marker DEGs 
- 
- `{stress}_DEG.csv`  Full DESeq2 results table 
- 
- `confusion_matrix_avg.pdf`  Averaged confusion matrix across all CV folds 
- 
- `SHAP_summary_{class}.pdf`  Beeswarm plot — single checkpoint 
- 
- `SHAP_top_genes_all_classes.pdf`  Mean |SHAP| bar chart — single checkpoint 
- 
- `SHAP_values_{class}.csv`  Per-sample SHAP values — single checkpoint 
- 
- `SHAP_avg_summary_{class}.pdf`  Beeswarm — CV-averaged SHAP 
- 
- `SHAP_avg_top_genes_all_classes.pdf`  Bar chart — CV-averaged SHAP 
- 
- `SHAP_avg_values_{class}.csv`  Per-sample averaged SHAP values 
- 
- `SHAP_gene_ranking_all_classes.csv`  Gene importance ranking, all classes 
-
+```
+ `marker_genes.txt`  |  Final marker gene list used as model input  
+ `{stress}_DEG_{up/down}.txt`  |  All DEGs per stress  
+ `{stress}_DEG_{up/down}_unique.txt`  |  Stress-exclusive DEGs  
+ `{stress}_DEG_{up/down}_sub.txt`  |  Subsampled marker DEGs  
+ `{stress}_DEG.csv`  |  Full DESeq2 results table  
+ `confusion_matrix_avg.pdf`  |  Averaged confusion matrix across all CV folds  
+ `SHAP_summary_{class}.pdf`  |  Beeswarm plot — single checkpoint  
+ `SHAP_top_genes_all_classes.pdf`  |  Mean |SHAP| bar chart — single checkpoint  
+ `SHAP_values_{class}.csv`  |  Per-sample SHAP values — single checkpoint  
+ `SHAP_avg_summary_{class}.pdf`  |  Beeswarm — CV-averaged SHAP  
+ `SHAP_avg_top_genes_all_classes.pdf`  |  Bar chart — CV-averaged SHAP  
+ `SHAP_avg_values_{class}.csv`  |  Per-sample averaged SHAP values  
+ `SHAP_gene_ranking_all_classes.csv`  |  Gene importance ranking, all classes 
+ ```
 
