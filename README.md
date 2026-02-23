@@ -62,25 +62,25 @@ Labels are **case-sensitive** and must exactly match `stress_types` in `config.y
 
 ```bash
 # Full pipeline (DESeq2 → train → evaluate → SHAP)
-python AbiOmics_pipeline_v.1.0.py
+python run_AbiOmics_v.1.0.py
 
 # Skip DESeq2 (reuse marker_genes.txt from a previous run — much faster)
-python AbiOmics_pipeline_v.1.0.py --skip-deseq
+python run_AbiOmics_v.1.0.py --skip-deseq
 
 # Skip training too (evaluate + SHAP on existing checkpoints)
-python AbiOmics_pipeline_v.1.0.py --skip-deseq --skip-training
+python run_AbiOmics_v.1.0.py --skip-deseq --skip-training
 
 # SHAP only
-python AbiOmics_pipeline_v.1.0.py --shap-only
+python run_AbiOmics_v.1.0.py --shap-only
 
 # Load data + DESeq2 only, no training
-python AbiOmics_pipeline_v.1.0.py --dry-run
+python run_AbiOmics_v.1.0.py --dry-run
 
 # Custom config (e.g., for a different organism)
-python AbiOmics_pipeline_v.1.0.py --config experiments/rice/config.yaml
+python run_AbiOmics_v.1.0.py --config experiments/rice/config.yaml
 
 # Write a log file
-python AbiOmics_pipeline_v.1.0.py --log-file logs/run_001.log
+python run_AbiOmics_v.1.0.py --log-file logs/run_001.log
 ```
 
 ---
@@ -90,7 +90,7 @@ python AbiOmics_pipeline_v.1.0.py --log-file logs/run_001.log
 1. **Edit `config/config.yaml`** — change stress names, file paths, sample counts,
    DEG thresholds, and model hyperparameters.
 2. **Put your data files in `Data/`** following the naming convention above.
-3. **Run `python AbiOmics_pipeline_v.1.0.py`** — everything else is automatic.
+3. **Run `python run_AbiOmics_v.1.0.py`** — everything else is automatic.
 
 ### Example: adding a new stress type
 
