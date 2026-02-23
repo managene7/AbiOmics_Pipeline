@@ -1,0 +1,78 @@
+# =============================================================================
+#  Stress Classifier — Configuration
+# =============================================================================
+#  Edit ONLY this file to adapt the pipeline to a new experiment or dataset.
+#  No Python code changes are needed for routine re-use.
+# =============================================================================
+
+# ── Reproducibility ───────────────────────────────────────────────────────────
+random_seed: 1
+
+# ── Data ─────────────────────────────────────────────────────────────────────
+data:
+  data_path:    "Data"
+  index_column: "Gene_ID"    # row-index column name in the TPM CSV
+  tpm_threshold: 20          # genes with max TPM < this are dropped before DESeq2
+
+  # Single TPM matrix containing ALL samples (genes × samples)
+  tpm_file:  "TPM_merged_samples.csv"
+
+  # Single ID file:  two comma-separated columns, NO header
+  #   sample_ID, control
+  #   sample_ID, stress1
+  #   sample_ID, stress2
+  #   ...
+  # The label in column 2 must match the names in stress_types.
+  # "control" is the reserved label for control samples.
+  id_file:   "sample_labels.csv"
+  control_label: "control"   # label string used for control samples in id_file
+
+  # Stress-type names — must match the labels used in id_file (case-sensitive).
+  # Order determines integer label assignment: first entry = label 1, second = label 2 …
+  # label 0 is always Control.
+  stress_types: ["salt", "cold", "heat", "drought"]
+
+# ── Train / test split ───────────────────────────────────────────────────────
+split:
+  n_control_training:  120
+  n_control_testing:   13
+  n_samples_training:  120
+  n_samples_testing:   13
+
+  # Per-stress override for n_control_testing  {StressName: n}
+  control_testing_overrides:
+    Drought: 4
+
+# ── DESeq2 and marker-gene selection ─────────────────────────────────────────
+deseq:
+  log2fc_threshold:     1.0
+  padj_threshold:       0.001
+  n_deg_per_direction:  40     # unique up- and down-DEGs sampled per stress
+
+# ── Model training ────────────────────────────────────────────────────────────
+training:
+  n_folds:             5       # StratifiedKFold splits
+  n_epochs:            4000
+  early_stop_patience: 500
+  min_epoch:           100
+  batch_size:          84
+  learning_rate:       0.005
+  cuda_device:         0       # GPU index; ignored when CUDA is unavailable
+  model_save_path:     "Trained_models"
+
+# ── Evaluation ────────────────────────────────────────────────────────────────
+evaluation:
+  model_save_path: "Trained_models"
+
+# ── SHAP ─────────────────────────────────────────────────────────────────────
+shap:
+  device:          "cpu"   # GradientExplainer is stable on CPU
+  n_background:    100     # training samples used as reference background
+  top_n_genes:     20      # genes shown in beeswarm / bar plots
+  run_cv_average:  true    # average SHAP values over all CV folds
+
+# ── Outputs ──────────────────────────────────────────────────────────────────
+output:
+  export_path:  "Export"
+  plot_dpi:     150
+  plot_format:  "pdf"      # "pdf" or "png"
